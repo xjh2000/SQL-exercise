@@ -83,6 +83,22 @@ from (SELECT Manufacturers.Name, MAX(Price) price
           max_price_mapping.price = products_with_manu_name.price);
 
 -- 1.17 Add a new product: Loudspeakers, $70, manufacturer 2.
+insert into Products (Code, Name, Price, Manufacturer)
+values (11, 'Loudspeakers', 70, 2);
+
 -- 1.18 Update the name of product 8 to "Laser Printer".
+update Products set Name = 'Laser Printer'
+where Code = 8;
+
+select Name
+from Products
+where Code = 8;
+
 -- 1.19 Apply a 10% discount to all products.
+update Products set Price = Price * 0.9;
+
+select Name, Price from Products;
+
 -- 1.20 Apply a 10% discount to all products with a price larger than or equal to $120.
+update Products set Price = Price * 0.9
+where 120 <= Price;
